@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sage &amp; Stone Salon — Book Online</title>
+<meta name="description" content="Book an appointment with Sage &amp; Stone Salon in Phoenix, AZ.">
+<meta name="theme-color" content="#ef8f86">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main id="top" class="page">
+  <div class="account-bar" id="accountBar" aria-live="polite"><span>Not signed in</span></div>
+  <div class="layout">
+
+    <div class="main-col">
+
+      <!-- Photos -->
+      <section class="hero" aria-label="Photos">
+        <div class="carousel" id="carousel">
+          <div class="carousel-track" id="carouselTrack"></div>
+          <button type="button" class="carousel-btn prev" id="carPrev" aria-label="Previous photo">‹</button>
+          <button type="button" class="carousel-btn next" id="carNext" aria-label="Next photo">›</button>
+          <div class="carousel-dots" id="carDots"></div>
+          <button type="button" class="btn-photos" id="showAllPhotos">Show all photos</button>
+        </div>
+        <div class="hero-title-row">
+          <div>
+            <h1>Sage &amp; Stone Salon</h1>
+            <p class="hero-sub">★★★★★ <strong>5.0</strong> · 2 reviews · Phoenix, AZ</p>
+          </div>
+          <button type="button" class="btn-book hide-md-up" data-book>Book</button>
+        </div>
+      </section>
+
+      <nav class="section-nav" aria-label="Sections">
+        <a href="#services" data-nav>Services</a>
+        <a href="#team" data-nav>Team</a>
+        <a href="#about" data-nav>About</a>
+        <a href="#gallery" data-nav>Gallery</a>
+        <a href="#reviews" data-nav>Reviews</a>
+        <a href="#address" data-nav>Address</a>
+      </nav>
+
+      <!-- Services -->
+      <section id="services" class="section">
+        <div class="section-head">
+          <h2>Services</h2>
+          <p id="staffFilterNote" class="muted"></p>
+        </div>
+        <div id="servicesList" class="services-list"><!-- rendered by app.js --></div>
+      </section>
+
+      <aside class="ad-card" aria-label="Advertisement">
+        <span class="ad-label">Sponsored</span>
+        <div class="ad-body">
+          <div>
+            <h3>ProSupply Salon Products</h3>
+            <p>Wholesale pricing for licensed professionals.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Team -->
+      <section id="team" class="section">
+        <h2>Team</h2>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">N</div>
+          <div class="team-info">
+            <h3>Nicolas</h3>
+            <p class="muted">Stylist</p>
+          </div>
+          <button type="button" class="btn-outline" id="bookWithNicolas">Book with Nicolas</button>
+        </article>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section">
+        <h2>About</h2>
+        <p>Sage &amp; Stone Salon is a salon in Downtown Phoenix. Services include haircuts, colour, extensions and treatments. Appointments are with Nicolas.</p>
+        <ul class="contact-list">
+          <li>📞 <a href="tel:+14805550119">(480) 555-0119</a></li>
+          <li>✉️ <a href="mailto:hello@sageandstone.example">hello@sageandstone.example</a></li>
+          <li>📷 <a href="#" target="_blank" rel="noopener">Instagram @sageandstonesalon</a></li>
+        </ul>
+        <div class="pay-row" aria-label="Accepted payments">
+          <span class="pay-chip">VISA</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Apple Pay</span><span class="pay-chip">G Pay</span>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="section">
+        <div class="section-head"><h2>Gallery</h2><button type="button" class="btn-outline small" id="showAllPhotos2">Show all photos</button></div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </section>
+
+      <!-- Reviews -->
+      <section id="reviews" class="section">
+        <h2>Reviews</h2>
+        <div class="reviews-head">
+          <div class="laurel" aria-label="Rated 5.0 out of 5">
+            <span aria-hidden="true">🌿</span><strong>5.0</strong><span aria-hidden="true">🌿</span>
+          </div>
+          <div class="breakdown" aria-label="Rating breakdown">
+            <div class="bar-row"><span>5 ★</span><div class="bar"><i style="width:100%"></i></div><span>2</span></div>
+            <div class="bar-row"><span>4 ★</span><div class="bar"><i style="width:0%"></i></div><span>0</span></div>
+            <div class="bar-row"><span>3 ★</span><div class="bar"><i style="width:0%"></i></div><span>0</span></div>
+            <div class="bar-row"><span>2 ★</span><div class="bar"><i style="width:0%"></i></div><span>0</span></div>
+            <div class="bar-row"><span>1 ★</span><div class="bar"><i style="width:0%"></i></div><span>0</span></div>
+          </div>
+        </div>
+        <article class="review-card">
+          <div class="review-meta"><span class="avatar small" aria-hidden="true">S</span><div><strong>Sarah M.</strong><p class="muted">★★★★★ · Review</p></div></div>
+          <p>“Great cut, and booking took a minute.”</p>
+        </article>
+        <article class="review-card">
+          <div class="review-meta"><span class="avatar small" aria-hidden="true">D</span><div><strong>Danielle R.</strong><p class="muted">★★★★★ · Review</p></div></div>
+          <p class="muted">“Booked the night before — really happy with the colour.”</p>
+        </article>
+      </section>
+
+      <!-- Address -->
+      <section id="address" class="section">
+        <h2>Address</h2>
+        <address>100 N 3rd St, Ste 100,<br>Downtown Phoenix, AZ 85004</address>
+        <div class="map-wrap">
+          <iframe title="Map — Sage &amp; Stone Salon" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=100%20N%203rd%20St%2C%20Ste%20100%2C%20Phoenix%2C%20AZ%2085004&output=embed"></iframe>
+        </div>
+        <a class="btn-outline" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&destination=100+N+3rd+St+Ste+100+Phoenix+AZ+85004">Get directions</a>
+      </section>
+
+      <footer class="footer">
+        <p class="muted">Sage &amp; Stone Salon · 100 N 3rd St, Ste 100, Phoenix, AZ 85004 · (480) 555-0119</p>
+      </footer>
+    </div>
+
+    <!-- Sidebar (desktop) -->
+    <aside class="profile-card" aria-label="Business details">
+      <div class="avatar large" aria-hidden="true">A</div>
+      <h2>Sage &amp; Stone Salon</h2>
+      <p class="muted">★★★★★ 5.0 (2) · Phoenix, AZ</p>
+      <button type="button" class="btn-book block" data-book>Book appointment</button>
+      <ul class="profile-meta">
+        <li>📍 100 N 3rd St, Ste 100</li>
+        <li>📞 <a href="tel:+14805550119">(480) 555-0119</a></li>
+        <li>📷 <a href="#" target="_blank" rel="noopener">@sageandstonesalon</a></li>
+      </ul>
+      <p class="muted small">Walk-ins subject to availability.</p>
+    </aside>
+  </div>
+</main>
+
+<button type="button" class="book-pill" data-book>Book appointment</button>
+
+<button type="button" id="supportDock" class="support-dock" aria-haspopup="dialog">💬 Support</button>
+
+<!-- Gallery modal -->
+<div id="galleryModal" class="modal" hidden role="dialog" aria-modal="true" aria-label="All photos">
+  <div class="modal-card wide">
+    <button type="button" class="modal-close" data-close-gallery aria-label="Close">×</button>
+    <h2>All photos</h2>
+    <div class="gallery-grid modal-grid" id="modalGalleryGrid"></div>
+  </div>
+</div>
+
+<!-- Support modal -->
+<div id="supportModal" class="modal" hidden role="dialog" aria-modal="true" aria-label="Support">
+  <div class="modal-card">
+    <button type="button" class="modal-close" data-close-support aria-label="Close">×</button>
+    <h2>Support</h2>
+    <p class="muted">Questions about a booking? Send a message or call the salon.</p>
+    <div class="support-chat" id="supportChat" aria-live="polite">
+      <div class="chat-bubble agent">Hi — how can we help?</div>
+    </div>
+    <div class="support-actions">
+      <button type="button" class="btn-outline small" data-support-q="I need help with my booking">Help with my booking</button>
+      <button type="button" class="btn-outline small" data-support-q="I need to reschedule">Reschedule</button>
+      <a class="btn-book small" href="tel:+14805550119">📞 Call (480) 555-0119</a>
+    </div>
+    <form id="supportForm" class="support-form">
+      <label class="sr-only" for="supportInput">Type your question</label>
+      <input id="supportInput" type="text" placeholder="Type your question…" aria-label="Type your question" autocomplete="off">
+      <button class="btn-book" type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
+<!-- Booking drawer -->
+<div id="drawerOverlay" class="overlay" hidden></div>
+<aside id="bookingDrawer" class="drawer" hidden role="dialog" aria-modal="true" aria-label="Book an appointment">
+  <div class="drawer-head">
+    <h2>Book appointment</h2>
+    <button type="button" class="modal-close" id="drawerClose" aria-label="Close booking">×</button>
+  </div>
+
+  <div id="bookingFormView">
+    <div class="confirm-box">
+      <div><span class="muted small">Service</span><p><strong id="bkServiceName">—</strong><br><span class="muted" id="bkServiceMeta">—</span></p></div>
+      <div><span class="muted small">With</span><p><span class="avatar tiny" aria-hidden="true">N</span> <strong>Nicolas</strong></p></div>
+    </div>
+
+    <label class="field-label" for="bufferSelect">Buffer after appointment</label>
+    <select id="bufferSelect" class="field"><option value="15">15 min buffer</option><option value="30">30 min buffer</option></select>
+
+    <p class="field-label" id="dayChipsLabel">Pick a day</p>
+    <div id="dayChips" class="day-chips" role="group" aria-labelledby="dayChipsLabel"></div>
+
+    <p class="field-label" id="slotGridLabel">Available times <span class="muted" id="slotHint"></span></p>
+    <div id="slotGrid" class="slot-grid" role="group" aria-labelledby="slotGridLabel"></div>
+    <p id="slotSummary" class="slot-summary muted" aria-live="polite"></p>
+
+    <div class="social-box">
+      <p class="field-label">Confirm your details <span class="req">*</span></p>
+      <div class="social-row">
+        <button type="button" class="btn-social" data-social="Instagram" aria-pressed="false">📷 Continue with Instagram</button>
+        <button type="button" class="btn-social" data-social="TikTok" aria-pressed="false">♪ Continue with TikTok</button>
+        <button type="button" class="btn-social" data-social="Google" aria-pressed="false">G Continue with Google</button>
+      </div>
+      <p id="socialStatus" class="muted small" aria-live="polite">Sign in with one of the above, or enter your name and phone below.</p>
+    </div>
+
+    <label class="field-label" for="guestName">Guest name</label>
+    <input id="guestName" class="field" type="text" placeholder="Your name" autocomplete="name">
+    <label class="field-label" for="guestPhone">Phone</label>
+    <input id="guestPhone" class="field" type="tel" placeholder="(480) 555-0100" autocomplete="tel">
+
+    <p id="bookingError" class="error" role="alert" aria-live="assertive" hidden></p>
+    <button type="button" id="confirmBookingBtn" class="btn-book block large">Confirm booking</button>
+    <p class="muted small center">No payment is taken online.</p>
+  </div>
+
+  <div id="bookingDoneView" hidden>
+    <div class="done-check" aria-hidden="true">✓</div>
+    <h3>Booked</h3>
+    <p id="doneSummary"></p>
+    <a class="btn-book block" href="#" target="_blank" rel="noopener">Follow @sageandstonesalon on Instagram</a>
+    <aside class="ad-card compact">
+      <span class="ad-label">Sponsored</span>
+      <p class="muted">10% off haircare products in store when you show this confirmation.</p>
+    </aside>
+    <button type="button" class="btn-outline block" id="doneCloseBtn">Done</button>
+  </div>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>

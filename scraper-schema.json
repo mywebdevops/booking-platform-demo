@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "booking": {
+    "bufferOptions": [
+      15,
+      30
+    ],
+    "closeHour": 18,
+    "confirmationCta": {
+      "handle": "@sageandstonesalon",
+      "label": "Follow @sageandstonesalon on Instagram"
+    },
+    "defaultBufferMinutes": 15,
+    "openHour": 9,
+    "slotIntervalMinutes": 15,
+    "socialVerification": {
+      "guestFallback": {
+        "fields": [
+          "name",
+          "phone"
+        ]
+      },
+      "providers": [
+        "Instagram",
+        "TikTok",
+        "Google"
+      ],
+      "required": true,
+      "mode": "test",
+      "testPage": "auth-test.html"
+    }
+  },
+  "description": "Business, services, team and reviews for the booking page, in a structured file the page loads at runtime. Sample data — the business is fictional.",
+  "gallery": [
+    {
+      "alt": "Sage & Stone Salon — salon interior",
+      "id": "hero-1",
+      "src": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "alt": "Styling stations",
+      "id": "gallery-2",
+      "src": "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "alt": "Hair styling in progress",
+      "id": "gallery-3",
+      "src": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "alt": "Finished hair colour work",
+      "id": "gallery-4",
+      "src": "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "alt": "Salon detail",
+      "id": "gallery-5",
+      "src": "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+      "alt": "Wash and style area",
+      "id": "gallery-6",
+      "src": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1400&q=80"
+    }
+  ],
+  "provider": {
+    "about": "Sage & Stone Salon is a salon in Downtown Phoenix. Services include haircuts, colour, extensions and treatments. Appointments are with Nicolas.",
+    "address": {
+      "street": "100 N 3rd St, Ste 100",
+      "neighborhood": "Downtown Phoenix",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85004",
+      "full": "100 N 3rd St, Ste 100, Downtown Phoenix, Phoenix, AZ 85004",
+      "mapEmbedQuery": "100 N 3rd St, Ste 100, Phoenix, AZ 85004",
+      "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=100+N+3rd+St+Ste+100+Phoenix+AZ+85004"
+    },
+    "branding": {
+      "accent": "#ef8f86",
+      "accentCssVar": "--brand-accent",
+      "colorScheme": "auto (prefers-color-scheme)",
+      "logoText": "A"
+    },
+    "email": "hello@sageandstone.example",
+    "id": "sage-stone-salon",
+    "instagram": {
+      "handle": "@sageandstonesalon",
+      "url": "#"
+    },
+    "name": "Sage & Stone Salon",
+    "paymentsAccepted": [
+      "Visa",
+      "Mastercard",
+      "Apple Pay",
+      "Google Pay"
+    ],
+    "phone": "(480) 555-0119",
+    "phoneHref": "tel:+14805550119",
+    "tagline": "Salon in Downtown Phoenix"
+  },
+  "reviews": {
+    "average": 5.0,
+    "breakdown": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 2
+    },
+    "items": [
+      {
+        "id": "rev-1",
+        "author": "Sarah M.",
+        "rating": 5,
+        "source": "Sample",
+        "verified": false,
+        "text": "Great cut, and booking took a minute."
+      },
+      {
+        "id": "rev-2",
+        "author": "Danielle R.",
+        "rating": 5,
+        "source": "Sample",
+        "verified": false,
+        "text": "Booked the night before — really happy with the colour."
+      }
+    ],
+    "source": "Sample reviews",
+    "total": 2
+  },
+  "schemaVersion": "1.0.0",
+  "services": [
+    {
+      "bufferMinutes": 15,
+      "description": "Free consultation with Nicolas to discuss your hair history, options and pricing.",
+      "durationMinutes": 15,
+      "id": "consultation",
+      "name": "Consultation",
+      "price": 0,
+      "priceLabel": "Free"
+    },
+    {
+      "bufferMinutes": 15,
+      "description": "Shampoo and blow-dry style.",
+      "durationMinutes": 45,
+      "id": "shampoo-style",
+      "name": "shampoo & style",
+      "price": 110,
+      "priceLabel": "$110"
+    },
+    {
+      "bufferMinutes": 30,
+      "description": "Highlights, balayage, ombré or baby lights, finished with a gloss.",
+      "durationMinutes": 120,
+      "id": "highlights-balayage",
+      "name": "highlights, balayage, ombré, baby lights",
+      "price": 210,
+      "priceLabel": "$210"
+    },
+    {
+      "bufferMinutes": 30,
+      "description": "Extension fitting for added length and volume. A consultation is recommended first.",
+      "durationMinutes": 120,
+      "id": "hair-extensions",
+      "name": "hair extensions",
+      "price": 2600,
+      "priceLabel": "$2,600"
+    },
+    {
+      "bufferMinutes": 15,
+      "description": "Colour applied to the roots to cover regrowth.",
+      "durationMinutes": 60,
+      "id": "root-touch-up",
+      "name": "root touch-up",
+      "price": 110,
+      "priceLabel": "$110"
+    },
+    {
+      "bufferMinutes": 15,
+      "description": "Men's haircut, finished with styling.",
+      "durationMinutes": 30,
+      "id": "mens-haircut",
+      "name": "mens haircut",
+      "price": 45,
+      "priceLabel": "$45"
+    },
+    {
+      "bufferMinutes": 30,
+      "description": "Smoothing treatment to reduce frizz.",
+      "durationMinutes": 150,
+      "id": "brazilian-blowout",
+      "name": "brazilian blowout",
+      "price": 399,
+      "priceLabel": "$399"
+    },
+    {
+      "bufferMinutes": 30,
+      "description": "Fitting of extension wefts, cut and styled to finish.",
+      "durationMinutes": 120,
+      "id": "extension-install",
+      "name": "extension Install",
+      "price": 1500,
+      "priceLabel": "$1,500"
+    },
+    {
+      "bufferMinutes": 30,
+      "description": "Treatment for damaged or thinning hair.",
+      "durationMinutes": 120,
+      "id": "hair-restoration",
+      "name": "hair restoration treatment",
+      "price": 1399,
+      "priceLabel": "$1,399"
+    },
+    {
+      "bufferMinutes": 15,
+      "description": "Permanent curl for short hair.",
+      "durationMinutes": 90,
+      "id": "short-permanent-curl",
+      "name": "short permanent curl",
+      "price": 110,
+      "priceLabel": "$110"
+    },
+    {
+      "bufferMinutes": 15,
+      "description": "Maintenance appointment to move up extension rows between full fittings.",
+      "durationMinutes": 30,
+      "id": "mini-move-up",
+      "name": "mini move up",
+      "price": 50,
+      "priceLabel": "$50"
+    },
+    {
+      "bufferMinutes": 15,
+      "description": "Haircut finished with a blow-dry style.",
+      "durationMinutes": 45,
+      "id": "haircut-style",
+      "name": "haircut & style",
+      "price": 110,
+      "priceLabel": "$110"
+    }
+  ],
+  "source": {
+    "note": "Sample data — fictional business",
+    "importedAt": "2026-11-08T21:39:00Z"
+  },
+  "team": [
+    {
+      "avatarInitial": "N",
+      "bio": "Stylist at Sage & Stone Salon.",
+      "id": "nicolas",
+      "instagram": "@sageandstonesalon",
+      "name": "Nicolas",
+      "role": "Master Stylist & Owner"
+    }
+  ]
+}

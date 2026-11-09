@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test sign-in</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="test-wrap">
+  <div class="test-card">
+    <h1 style="font-size:1.3rem">Test sign-in — <span id="providerName">Provider</span></h1>
+    <p class="muted">This is a local test page standing in for the provider. It is not
+    <span id="providerName2">the provider</span>, it will not ask for your password, and
+    nothing is sent anywhere. It exists so the sign-in flow can be tested before the
+    real provider apps are set up.</p>
+
+    <form id="authForm">
+      <label class="field-label" for="nameInput">Name</label>
+      <input id="nameInput" class="field" type="text" value="Nick" autocomplete="name">
+      <label class="field-label" for="handleInput">Username or email at the provider</label>
+      <input id="handleInput" class="field" type="text" placeholder="@username or you@example.com" autocomplete="username">
+      <div class="test-actions">
+        <button class="btn-book" type="submit">Authorize</button>
+        <button class="btn-outline" type="button" id="cancelBtn">Cancel</button>
+      </div>
+    </form>
+    <p class="muted small">Authorizing creates a test account on this device only
+    (stored in the browser's local storage) and returns you to the booking page.</p>
+  </div>
+</main>
+<script>
+(function(){
+  'use strict';
+  var q = new URLSearchParams(location.search);
+  var provider = q.get('provider') || 'Provider';
+  var state = q.get('state') || '';
+  var redirect = q.get('redirect') || 'index.html';
+  document.getElementById('providerName').textContent = provider;
+  document.getElementById('providerName2').textContent = provider;
+  function back(extra){
+    var u;
+    try { u = new URL(redirect, location.href); } catch(_) { u = new URL('index.html', location.href); }
+    var sameOrigin = (u.protocol === 'http:' || u.protocol === 'https:') && u.origin === location.origin;
+    var safeFile = location.protocol === 'file:' && u.protocol === 'file:';
+    if(!sameOrigin && !safeFile) u = new URL('index.html', location.href);
+    Object.keys(extra).forEach(function(k){ u.searchParams.set(k, extra[k]); });
+    location.replace(u.toString());
+  }
+  document.getElementById('cancelBtn').onclick = function(){ back({ auth: 'cancelled' }); };
+  document.getElementById('authForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('nameInput').value.trim() || 'Guest';
+    var handle = document.getElementById('handleInput').value.trim() || name;
+    back({
+      auth: 'ok',
+      provider: provider,
+      code: 'test-' + Math.random().toString(36).slice(2, 10),
+      state: state,
+      name: name,
+      handle: handle
+    });
+  });
+})();
+</script>
+</body>
+</html>

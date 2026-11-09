@@ -36,7 +36,8 @@
   var provider = q.get('provider') || 'Provider';
   var state = q.get('state') || '';
   var redirect = q.get('redirect') || 'index.html';
-  document.getElementById('providerName').textContent = provider;
+  var role = q.get('role') || '';
+  document.getElementById('providerName').textContent = role === 'provider' ? provider + ' (Business provider)' : provider;
   document.getElementById('providerName2').textContent = provider;
   function back(extra){
     var u;
@@ -47,19 +48,25 @@
     Object.keys(extra).forEach(function(k){ u.searchParams.set(k, extra[k]); });
     location.replace(u.toString());
   }
-  document.getElementById('cancelBtn').onclick = function(){ back({ auth: 'cancelled' }); };
+  document.getElementById('cancelBtn').onclick = function(){
+    var extra = { auth: 'cancelled' };
+    if(role) extra.role = role;
+    back(extra);
+  };
   document.getElementById('authForm').addEventListener('submit', function(e){
     e.preventDefault();
     var name = document.getElementById('nameInput').value.trim() || 'Guest';
     var handle = document.getElementById('handleInput').value.trim() || name;
-    back({
+    var extra = {
       auth: 'ok',
       provider: provider,
       code: 'test-' + Math.random().toString(36).slice(2, 10),
       state: state,
       name: name,
       handle: handle
-    });
+    };
+    if(role) extra.role = role;
+    back(extra);
   });
 })();
 </script>

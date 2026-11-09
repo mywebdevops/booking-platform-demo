@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sage &amp; Stone Salon — Book Online</title>
-<meta name="description" content="Book an appointment with Sage &amp; Stone Salon in Phoenix, AZ.">
+<title>Sage &amp; Stone Salon — BastaPapi</title>
+<meta name="description" content="Book an appointment with Sage &amp; Stone Salon in Phoenix, AZ on BastaPapi.com.">
 <meta name="theme-color" content="#ef8f86">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="styles.css">
@@ -12,7 +12,90 @@
 <body>
 
 <main id="top" class="page">
+  <header class="site-header" aria-label="Platform navigation">
+    <div class="site-brand-row">
+      <span class="platform-name">BastaPapi.com</span>
+      <div class="profile-switcher" role="group" aria-label="Sample business profiles">
+        <button type="button" class="profile-tab active" id="switchSageBtn" data-switch-business="sageandstonesalon">
+          Sage &amp; Stone Salon <span id="sageTabBadge" class="badge claimed">Claimed</span>
+        </button>
+        <button type="button" class="profile-tab" id="switchDesertBtn" data-switch-business="desertbloombarbers">
+          Desert Bloom Barbers <span id="desertTabBadge" class="badge unclaimed">Unclaimed</span>
+        </button>
+      </div>
+    </div>
+    <div class="header-links">
+      <a href="#providerDashboard" class="for-businesses-link" id="forBusinessesLink">For businesses</a>
+    </div>
+  </header>
+
   <div class="account-bar" id="accountBar" aria-live="polite"><span>Not signed in</span></div>
+
+  <div class="subdomain-bar" id="subdomainBar">
+    <span>Page: <code id="pageSubdomain">sageandstonesalon.bastapapi.com</code></span>
+    <span id="claimStatusBadge" class="badge claimed">Claimed</span>
+  </div>
+
+  <!-- Provider login & dashboard panel (Part 1 & Part 2) -->
+  <section id="providerDashboard" class="provider-panel" hidden aria-label="For businesses">
+    <div class="provider-panel-head">
+      <h2>For businesses</h2>
+      <button type="button" class="btn-outline small" id="closeProviderDashboardBtn">Close</button>
+    </div>
+
+    <div id="providerSignInView">
+      <p class="muted small">Provider sign-in uses test mode via <code>auth-test.html</code>. Provider accounts are stored in <code>localStorage</code> separately from customer accounts. No passwords are requested or stored.</p>
+      <p id="providerClaimPrompt" class="claim-prompt" hidden>Sign in as a provider to claim <strong id="providerClaimTargetName">Desert Bloom Barbers</strong> (<code id="providerClaimTargetSlug">desertbloombarbers.bastapapi.com</code>).</p>
+      <div class="social-row provider-social-row">
+        <button type="button" class="btn-social" data-provider-social="Google">G Continue with Google</button>
+        <button type="button" class="btn-social" data-provider-social="Instagram">📷 Continue with Instagram</button>
+        <button type="button" class="btn-social" data-provider-social="TikTok">♪ Continue with TikTok</button>
+      </div>
+    </div>
+
+    <div id="providerAccountView" hidden>
+      <div class="provider-account-bar">
+        <span id="providerStatusText"></span>
+        <button type="button" class="btn-outline small" id="providerSignOutBtn">Sign out</button>
+      </div>
+
+      <div id="claimConfirmBox" class="claim-confirm-box" hidden>
+        <p id="claimConfirmText">Confirm that you are claiming <strong>Desert Bloom Barbers</strong> (<code>desertbloombarbers.bastapapi.com</code>) under this provider account.</p>
+        <div class="claim-confirm-actions">
+          <button type="button" class="btn-book small" id="confirmClaimBtn">Confirm claim</button>
+          <button type="button" class="btn-outline small" id="cancelClaimBtn">Cancel</button>
+        </div>
+      </div>
+
+      <div id="providerBusinessSummary" class="provider-biz-summary"></div>
+
+      <form id="providerBusinessForm" class="provider-biz-form">
+        <label class="field-label" for="providerBizSelect">Business profile to edit</label>
+        <select id="providerBizSelect" class="field">
+          <option value="desertbloombarbers">Desert Bloom Barbers (desertbloombarbers.bastapapi.com)</option>
+          <option value="sageandstonesalon">Sage &amp; Stone Salon (sageandstonesalon.bastapapi.com)</option>
+        </select>
+
+        <label class="field-label" for="providerBizName">Business name</label>
+        <input id="providerBizName" class="field" type="text" autocomplete="organization">
+
+        <label class="field-label" for="providerBizPhone">Public phone number</label>
+        <input id="providerBizPhone" class="field" type="tel" autocomplete="tel">
+
+        <label class="field-label" for="providerBizHours">Hours</label>
+        <input id="providerBizHours" class="field" type="text" placeholder="Mon–Sat 9:00 AM – 6:00 PM">
+
+        <div class="provider-form-actions">
+          <button type="submit" class="btn-book small" id="providerSaveBtn">Save business details</button>
+          <span id="providerSaveStatus" class="muted small" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Customer notification banner when a previously unclaimed business gets claimed -->
+  <div id="claimNotifyBanner" class="notify-banner" role="status" aria-live="polite" hidden></div>
+
   <div class="layout">
 
     <div class="main-col">
@@ -28,10 +111,24 @@
         </div>
         <div class="hero-title-row">
           <div>
-            <h1>Sage &amp; Stone Salon</h1>
-            <p class="hero-sub">★★★★★ <strong>5.0</strong> · 2 reviews · Phoenix, AZ</p>
+            <div class="title-with-badge">
+              <h1 id="bizHeroName">Sage &amp; Stone Salon</h1>
+              <span id="heroClaimBadge" class="badge claimed">Claimed</span>
+            </div>
+            <p class="hero-sub" id="bizHeroSub">★★★★★ <strong>5.0</strong> · 2 reviews · Phoenix, AZ · <code id="heroSubdomain">sageandstonesalon.bastapapi.com</code></p>
           </div>
-          <button type="button" class="btn-book hide-md-up" data-book>Book</button>
+          <button type="button" class="btn-book hide-md-up" id="heroBookBtn" data-book>Book</button>
+        </div>
+
+        <!-- Unclaimed profile actions (Part 2 & Part 3) -->
+        <div id="unclaimedActionsBox" class="unclaimed-box" hidden>
+          <p class="unclaimed-note">This profile (<code id="unclaimedSlugText">desertbloombarbers.bastapapi.com</code>) is <strong>Unclaimed</strong>. Online booking is disabled until the owner claims the page.</p>
+          <div class="unclaimed-btn-row">
+            <button type="button" class="btn-book small" id="textOwnerBtn">Text the owner</button>
+            <button type="button" class="btn-book small" id="callOwnerBtn">Call the owner</button>
+            <button type="button" class="btn-outline small" id="claimBusinessBtn">Claim this business</button>
+          </div>
+          <p id="outreachStatusNote" class="muted small" aria-live="polite"></p>
         </div>
       </section>
 
@@ -67,10 +164,10 @@
       <section id="team" class="section">
         <h2>Team</h2>
         <article class="team-card">
-          <div class="avatar" aria-hidden="true">N</div>
+          <div class="avatar" id="teamAvatar" aria-hidden="true">N</div>
           <div class="team-info">
-            <h3>Nicolas</h3>
-            <p class="muted">Stylist</p>
+            <h3 id="teamMemberName">Nicolas</h3>
+            <p class="muted" id="teamMemberRole">Stylist</p>
           </div>
           <button type="button" class="btn-outline" id="bookWithNicolas">Book with Nicolas</button>
         </article>
@@ -79,11 +176,12 @@
       <!-- About -->
       <section id="about" class="section">
         <h2>About</h2>
-        <p>Sage &amp; Stone Salon is a salon in Downtown Phoenix. Services include haircuts, colour, extensions and treatments. Appointments are with Nicolas.</p>
+        <p id="bizAboutText">Sage &amp; Stone Salon is a salon in Downtown Phoenix. Services include haircuts, colour, extensions and treatments. Appointments are with Nicolas.</p>
         <ul class="contact-list">
-          <li>📞 <a href="tel:+14805550119">(480) 555-0119</a></li>
-          <li>✉️ <a href="mailto:hello@sageandstone.example">hello@sageandstone.example</a></li>
-          <li>📷 <a href="#" target="_blank" rel="noopener">Instagram @sageandstonesalon</a></li>
+          <li>📞 <a id="bizPhoneLink" href="tel:+14805550119">(480) 555-0119</a></li>
+          <li>🕒 Hours: <span id="bizHoursText">Mon–Sat 9:00 AM – 6:00 PM</span></li>
+          <li id="bizEmailItem">✉️ <a id="bizEmailLink" href="mailto:hello@sageandstone.example">hello@sageandstone.example</a></li>
+          <li id="bizInstaItem">📷 <a id="bizInstaLink" href="#" target="_blank" rel="noopener">Instagram @sageandstonesalon</a></li>
         </ul>
         <div class="pay-row" aria-label="Accepted payments">
           <span class="pay-chip">VISA</span><span class="pay-chip">Mastercard</span>
@@ -125,37 +223,44 @@
       <!-- Address -->
       <section id="address" class="section">
         <h2>Address</h2>
-        <address>100 N 3rd St, Ste 100,<br>Downtown Phoenix, AZ 85004</address>
+        <address id="bizAddressText">100 N 3rd St, Ste 100,<br>Downtown Phoenix, AZ 85004</address>
         <div class="map-wrap">
-          <iframe title="Map — Sage &amp; Stone Salon" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          <iframe id="bizMapIframe" title="Map — Sage &amp; Stone Salon" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=100%20N%203rd%20St%2C%20Ste%20100%2C%20Phoenix%2C%20AZ%2085004&output=embed"></iframe>
         </div>
-        <a class="btn-outline" target="_blank" rel="noopener"
+        <a id="bizDirectionsLink" class="btn-outline" target="_blank" rel="noopener"
            href="https://www.google.com/maps/dir/?api=1&destination=100+N+3rd+St+Ste+100+Phoenix+AZ+85004">Get directions</a>
       </section>
 
       <footer class="footer">
-        <p class="muted">Sage &amp; Stone Salon · 100 N 3rd St, Ste 100, Phoenix, AZ 85004 · (480) 555-0119</p>
+        <p class="muted" id="bizFooterText">Sage &amp; Stone Salon · 100 N 3rd St, Ste 100, Phoenix, AZ 85004 · (480) 555-0119</p>
       </footer>
     </div>
 
     <!-- Sidebar (desktop) -->
     <aside class="profile-card" aria-label="Business details">
-      <div class="avatar large" aria-hidden="true">A</div>
-      <h2>Sage &amp; Stone Salon</h2>
-      <p class="muted">★★★★★ 5.0 (2) · Phoenix, AZ</p>
-      <button type="button" class="btn-book block" data-book>Book appointment</button>
+      <div class="avatar large" id="sidebarAvatar" aria-hidden="true">A</div>
+      <h2 id="sidebarBizName">Sage &amp; Stone Salon</h2>
+      <p class="muted small"><span id="sidebarClaimBadge" class="badge claimed">Claimed</span> · <code id="sidebarSubdomain">sageandstonesalon.bastapapi.com</code></p>
+      <p class="muted" id="sidebarBizSub">★★★★★ 5.0 (2) · Phoenix, AZ</p>
+      <button type="button" class="btn-book block" id="sidebarBookBtn" data-book>Book appointment</button>
+      <div id="sidebarUnclaimedActions" class="sidebar-unclaimed-actions" hidden>
+        <button type="button" class="btn-book block small" id="sidebarTextOwnerBtn">Text the owner</button>
+        <button type="button" class="btn-book block small" id="sidebarCallOwnerBtn">Call the owner</button>
+        <button type="button" class="btn-outline block small" id="sidebarClaimBtn">Claim this business</button>
+      </div>
       <ul class="profile-meta">
-        <li>📍 100 N 3rd St, Ste 100</li>
-        <li>📞 <a href="tel:+14805550119">(480) 555-0119</a></li>
-        <li>📷 <a href="#" target="_blank" rel="noopener">@sageandstonesalon</a></li>
+        <li id="sidebarAddressItem">📍 100 N 3rd St, Ste 100</li>
+        <li>📞 <a id="sidebarPhoneLink" href="tel:+14805550119">(480) 555-0119</a></li>
+        <li>🕒 <span id="sidebarHoursText">Mon–Sat 9:00 AM – 6:00 PM</span></li>
+        <li id="sidebarInstaItem">📷 <a id="sidebarInstaLink" href="#" target="_blank" rel="noopener">@sageandstonesalon</a></li>
       </ul>
       <p class="muted small">Walk-ins subject to availability.</p>
     </aside>
   </div>
 </main>
 
-<button type="button" class="book-pill" data-book>Book appointment</button>
+<button type="button" class="book-pill" id="mobileBookPill" data-book>Book appointment</button>
 
 <button type="button" id="supportDock" class="support-dock" aria-haspopup="dialog">💬 Support</button>
 
@@ -173,20 +278,77 @@
   <div class="modal-card">
     <button type="button" class="modal-close" data-close-support aria-label="Close">×</button>
     <h2>Support</h2>
-    <p class="muted">Questions about a booking? Send a message or call the salon.</p>
+    <p class="muted">Questions about a booking? Send a message or call the business.</p>
     <div class="support-chat" id="supportChat" aria-live="polite">
       <div class="chat-bubble agent">Hi — how can we help?</div>
     </div>
     <div class="support-actions">
       <button type="button" class="btn-outline small" data-support-q="I need help with my booking">Help with my booking</button>
       <button type="button" class="btn-outline small" data-support-q="I need to reschedule">Reschedule</button>
-      <a class="btn-book small" href="tel:+14805550119">📞 Call (480) 555-0119</a>
+      <a class="btn-book small" id="supportCallLink" href="tel:+14805550119">📞 Call (480) 555-0119</a>
     </div>
     <form id="supportForm" class="support-form">
       <label class="sr-only" for="supportInput">Type your question</label>
       <input id="supportInput" type="text" placeholder="Type your question…" aria-label="Type your question" autocomplete="off">
       <button class="btn-book" type="submit">Send</button>
     </form>
+  </div>
+</div>
+
+<!-- Text the owner modal (Part 3 — simulated) -->
+<div id="textOwnerModal" class="modal" hidden role="dialog" aria-modal="true" aria-label="Text the owner">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="closeTextModalBtn" aria-label="Close">×</button>
+    <h2>Text the owner (simulated)</h2>
+    <div id="textComposeView">
+      <p class="muted small">Recipient number: <strong id="textRecipientPhone">(602) 555-0147</strong> (<span id="textRecipientBiz">Desert Bloom Barbers</span>)</p>
+      <label class="field-label" for="textMessagePreview">Message to be texted</label>
+      <textarea id="textMessagePreview" class="field" rows="5" readonly></textarea>
+      <label class="checkbox-row">
+        <input type="checkbox" id="textNotifyCheckbox" checked>
+        <span>Notify me when they claim</span>
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn-book" id="sendTextBtn">Send (test mode)</button>
+        <button type="button" class="btn-outline" id="cancelTextBtn">Cancel</button>
+      </div>
+    </div>
+    <div id="textSentView" hidden>
+      <p id="textSentStatus" class="sent-confirm">Message marked as sent (test mode — nothing was actually sent). Outreach and notification preference saved in localStorage.</p>
+      <button type="button" class="btn-outline block" id="doneTextBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Call the owner modal (Part 3 — simulated) -->
+<div id="callOwnerModal" class="modal" hidden role="dialog" aria-modal="true" aria-label="Call the owner">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="closeCallModalBtn" aria-label="Close">×</button>
+    <h2>Call the owner (simulated)</h2>
+    <div id="callStep1View">
+      <p class="muted small">Simulated call to <strong id="callTargetBiz">Desert Bloom Barbers</strong> at <strong id="callTargetPhone">(602) 555-0147</strong>.</p>
+      <label class="field-label" for="callCustomerName">Your first name</label>
+      <input id="callCustomerName" class="field" type="text" placeholder="Your first name" autocomplete="given-name">
+      <label class="checkbox-row">
+        <input type="checkbox" id="callNotifyCheckbox" checked>
+        <span>Notify me when they claim</span>
+      </label>
+      <p id="callNameError" class="error small" role="alert" hidden>Please enter your first name.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn-book" id="startCallBtn">Start call (test mode)</button>
+        <button type="button" class="btn-outline" id="cancelCallBtn">Cancel</button>
+      </div>
+    </div>
+    <div id="callStep2View" hidden>
+      <p class="muted small">Call transcript (<span id="callTranscriptBiz">Desert Bloom Barbers</span> — simulated):</p>
+      <div id="callTranscript" class="call-transcript" aria-live="polite"></div>
+      <div id="callStep3View" class="call-followup" hidden>
+        <h3>Follow-up text to business (simulated)</h3>
+        <p id="callFollowupText" class="followup-box"></p>
+        <p class="muted small">Recorded in localStorage (test mode — no real call or SMS was placed).</p>
+        <button type="button" class="btn-outline block" id="doneCallBtn">Close</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -201,7 +363,7 @@
   <div id="bookingFormView">
     <div class="confirm-box">
       <div><span class="muted small">Service</span><p><strong id="bkServiceName">—</strong><br><span class="muted" id="bkServiceMeta">—</span></p></div>
-      <div><span class="muted small">With</span><p><span class="avatar tiny" aria-hidden="true">N</span> <strong>Nicolas</strong></p></div>
+      <div><span class="muted small">With</span><p><span class="avatar tiny" id="bkStaffAvatar" aria-hidden="true">N</span> <strong id="bkStaffName">Nicolas</strong></p></div>
     </div>
 
     <label class="field-label" for="bufferSelect">Buffer after appointment</label>
@@ -238,7 +400,7 @@
     <div class="done-check" aria-hidden="true">✓</div>
     <h3>Booked</h3>
     <p id="doneSummary"></p>
-    <a class="btn-book block" href="#" target="_blank" rel="noopener">Follow @sageandstonesalon on Instagram</a>
+    <a class="btn-book block" id="doneInstaLink" href="#" target="_blank" rel="noopener">Follow @sageandstonesalon on Instagram</a>
     <aside class="ad-card compact">
       <span class="ad-label">Sponsored</span>
       <p class="muted">10% off haircare products in store when you show this confirmation.</p>

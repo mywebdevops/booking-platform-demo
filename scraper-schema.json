@@ -252,5 +252,67 @@
       "name": "Nicolas",
       "role": "Master Stylist & Owner"
     }
+  ],
+  "examples": [
+    {
+      "provider": {
+        "id": "desert-bloom-barbers",
+        "slug": "desertbloombarbers",
+        "pageHost": "desertbloombarbers.bastapapi.com",
+        "claimed": false,
+        "name": "Desert Bloom Barbers",
+        "phone": "(602) 555-0147",
+        "phoneHref": "tel:+16025550147",
+        "hours": "Tue–Sat 9:00 AM – 6:00 PM",
+        "address": {
+          "street": "214 E Roosevelt St",
+          "city": "Phoenix",
+          "state": "AZ",
+          "zip": "85004",
+          "full": "214 E Roosevelt St, Phoenix, AZ 85004"
+        }
+      },
+      "services": [
+        {
+          "id": "db-haircut",
+          "name": "Haircut",
+          "durationMinutes": 30,
+          "price": 35,
+          "priceLabel": "$35",
+          "bufferMinutes": 15,
+          "description": "Standard haircut and style."
+        },
+        {
+          "id": "db-beard-trim",
+          "name": "Beard trim",
+          "durationMinutes": 20,
+          "price": 20,
+          "priceLabel": "$20",
+          "bufferMinutes": 15,
+          "description": "Beard shaping, trim and line-up."
+        },
+        {
+          "id": "db-hot-towel-shave",
+          "name": "Hot towel shave",
+          "durationMinutes": 45,
+          "price": 40,
+          "priceLabel": "$40",
+          "bufferMinutes": 15,
+          "description": "Traditional straight-razor shave with hot towel."
+        },
+        {
+          "id": "db-haircut-beard",
+          "name": "Haircut & beard trim",
+          "durationMinutes": 50,
+          "price": 50,
+          "priceLabel": "$50",
+          "bufferMinutes": 15,
+          "description": "Full haircut and beard trim."
+        }
+      ],
+      "source": {
+        "note": "Sample data — fictional unclaimed business"
+      }
+    }
   ]
 }

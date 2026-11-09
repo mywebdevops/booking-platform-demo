@@ -76,6 +76,53 @@ Test mode runs the same shape of flow as the real thing:
 To test the full loop, finish a booking after signing in — the confirmation
 uses your account name.
 
+## Provider sign-in (test mode)
+
+Service providers can sign in via the **For businesses** link in the header:
+
+1. Click **For businesses** and choose **Continue with Google / Instagram / TikTok**.
+2. The flow redirects to `auth-test.html` with `role=provider`. No passwords are
+   requested or stored.
+3. On return, the provider account is saved in `localStorage` under
+   `booking.providers` and the active session is saved under
+   `booking.providerSession`, completely separate from customer accounts
+   (`booking.accounts` / `booking.session`).
+4. The provider dashboard displays the signed-in provider, their claimed
+   business, and editable fields for **business name**, **public phone number**,
+   and **hours**. Saving writes to `booking.businessEdits` in `localStorage` and
+   updates the business profile immediately.
+
+## Unclaimed businesses and claiming
+
+Each business on BastaPapi gets a page at `<slug>.bastapapi.com`. The header
+includes a switcher between two fictional sample profiles:
+
+- **Sage & Stone Salon** (`sageandstonesalon.bastapapi.com`) — claimed by default,
+  with working online booking.
+- **Desert Bloom Barbers** (`desertbloombarbers.bastapapi.com`) — starts
+  badged **Unclaimed**. It lists the business details and sample services, but
+  online booking is disabled until the business is claimed.
+
+On an unclaimed profile:
+
+- **Text the owner** and **Call the owner** run **simulated** outreach flows in
+  test mode. **Text the owner** previews the outreach SMS to the listed phone
+  number and includes a "Notify me when they claim" option. **Call the owner**
+  asks for the customer's first name (pre-filled from a signed-in customer
+  account if present), plays a simulated call transcript line by line, and shows
+  the follow-up text message. Nothing is actually sent or called; outreach
+  records and notification preferences are stored in `localStorage`
+  (`booking.outreach` and `booking.notifyRequests`). Real SMS sending, automated
+  phone calls, and gathering/importing public business data from the web are
+  backend tasks for later.
+- **Claim this business** prompts the provider to sign in (if not already signed
+  in) and confirm the claim. Once confirmed, the claim is saved in
+  `localStorage` (`booking.claims`), the profile badge updates to **Claimed**,
+  the business appears in the provider's dashboard, and normal online booking is
+  enabled. If a customer previously used Text or Call and asked to be notified,
+  viewing the claimed profile displays a notice that the business is now taking
+  bookings.
+
 ## Going live with real sign-in
 
 Each provider needs its own developer app, registered once by the account
